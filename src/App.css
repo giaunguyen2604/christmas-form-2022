@@ -196,7 +196,7 @@ body {
 
 .button:disabled {
   cursor: not-allowed;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .button {
@@ -284,13 +284,14 @@ body {
 /* loading */
 .loading {
   position: relative;
-  margin-top: 40px;
+  margin-top: 16px;
+  padding-bottom: 25px;
 }
 
 .loader {
   position: absolute;
-  top: calc(50% - 32px);
-  left: calc(50% - 32px);
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
   width: 40px;
   height: 40px;
   border-radius: 50%;
