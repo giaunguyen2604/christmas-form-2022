@@ -83,7 +83,7 @@ function App() {
   return (
     <div className="app">
       <img src="/logo-exe.svg" alt="logo executionlab" className="logo-te" />
-      {/* <Snowfall /> */}
+      <Snowfall />
       {lcStatus === SUBMIT_STATUS.none ? (
         <div className="app-form">
           <form onSubmit={handleSubmit}>
