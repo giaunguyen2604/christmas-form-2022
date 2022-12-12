@@ -8,14 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploying to surge
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Install Node.js
         uses: actions/setup-node@v2-beta
         with:
-          node-version: 16
+          node-version: 16.x
 
-      - uses: borales/actions-yarn@v2.0.0 # `yarn install`
+      - uses: borales/actions-yarn@v4 # `yarn install`
         with:
           cmd: install
 
