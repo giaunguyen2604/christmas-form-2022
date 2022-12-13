@@ -5,7 +5,7 @@ import "./App.css";
 import Swal from "sweetalert2";
 import Snowfall from "react-snowfall";
 import Loading from "./Loading";
-import "react-lazy-load-image-component/src/effects/blur.css";
+import "react-lazy-load-image-component/src/effects/opacity.css";
 
 const apiURL = "https://api.apispreadsheets.com/data/NgI8dqq84Jv0OAYp/";
 const shortToast = Swal.mixin({
@@ -24,6 +24,11 @@ const randomCardURL = () => {
   }
 };
 
+function randomIntFromInterval(min, max) {
+  // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 const SUBMIT_STATUS = {
   none: 0,
   pending: 1,
@@ -34,6 +39,7 @@ function App() {
   const [name, setName] = useState("");
   const [submitStatus, setSubmitStatus] = useState(SUBMIT_STATUS.none);
   const [lcStatus, setlcStatus] = useState(SUBMIT_STATUS.none);
+  const [snowCount, setSnowCount] = useState(50);
 
   const [url] = useState(randomCardURL());
 
@@ -44,6 +50,15 @@ function App() {
     } else {
       setlcStatus(SUBMIT_STATUS.none);
     }
+
+    const interval = setInterval(() => {
+      const snowNum = randomIntFromInterval(0, 500);
+      setSnowCount(snowNum);
+    }, 10000);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   const successAction = () => {
@@ -83,9 +98,9 @@ function App() {
   const isDisabled = submitStatus !== SUBMIT_STATUS.none;
 
   return (
-    <div className="app">
+    <div className="app" style={{ position: "relative" }}>
       <img src="/logo-exe.svg" alt="logo executionlab" className="logo-te" />
-      <Snowfall />
+      <Snowfall snowflakeCount={snowCount} />
       {lcStatus === SUBMIT_STATUS.none ? (
         <div className="app-form">
           <form onSubmit={handleSubmit}>
@@ -120,12 +135,13 @@ function App() {
         </div>
       )}
       <div className="christmas-card-wrapper">
+        {/* <img src="/card1.png" alt="" /> */}
         <LazyLoadImage
           alt="card christmas"
           height="auto"
           src={url}
           width="100%"
-          effect="blur"
+          effect="opacity"
         />
       </div>
     </div>
