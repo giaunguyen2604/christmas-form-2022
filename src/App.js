@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useEffect, useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./App.css";
 import Swal from "sweetalert2";
 import Snowfall from "react-snowfall";
 import Loading from "./Loading";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const apiURL = "https://api.apispreadsheets.com/data/NgI8dqq84Jv0OAYp/";
 const shortToast = Swal.mixin({
@@ -118,7 +120,13 @@ function App() {
         </div>
       )}
       <div className="christmas-card-wrapper">
-        <img srcset={`${url} 3x`} alt="" className="christmas-card" />
+        <LazyLoadImage
+          alt="card christmas"
+          height="auto"
+          src={url}
+          width="100%"
+          effect="blur"
+        />
       </div>
     </div>
   );
