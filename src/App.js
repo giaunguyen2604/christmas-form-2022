@@ -101,7 +101,10 @@ function App() {
     <div className="app" style={{ position: "relative" }}>
       <img src="/logo-exe.svg" alt="logo executionlab" className="logo-te" />
       <Snowfall snowflakeCount={snowCount} />
-      {lcStatus === SUBMIT_STATUS.none ? (
+      <h1 style={{ fontSize: "20px", fontWeight: 700 }}>
+        The event ended. Thanks
+      </h1>
+      {/* {lcStatus === SUBMIT_STATUS.none ? (
         <div className="app-form">
           <form onSubmit={handleSubmit}>
             <div className="text-field">
@@ -133,7 +136,7 @@ function App() {
             Resubmit
           </button>
         </div>
-      )}
+      )} */}
       <div className="christmas-card-wrapper">
         {/* <img src="/card1.png" alt="" /> */}
         <LazyLoadImage
